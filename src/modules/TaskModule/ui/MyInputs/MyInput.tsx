@@ -9,7 +9,7 @@ function MyInput() {
     }
 
     return (
-        <div>
+        <div style={{ marginBottom: '20px' }}>
             <Input
                 size='large'
                 placeholder='task name'

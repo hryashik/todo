@@ -1,0 +1,23 @@
+.main {
+    height: 50px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid grey;
+    font-size: 20px;
+    border-radius: 8px;
+}
+
+.title {
+    display: flex;
+
+    p {
+        margin-left: 10px;
+    }
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+}
