@@ -1,21 +1,26 @@
 import React from 'react'
 import styles from './Task.module.scss'
-import { Button, Checkbox, Tooltip } from 'antd'
-import { DeleteTwoTone, EditOutlined, EditTwoTone } from '@ant-design/icons'
+import { Checkbox } from 'antd'
 import DeleteButton from '../../ui/DeleteButton/DeleteButton'
 import EditButton from '../../ui/EditButton/EditButton'
 
 interface IProps {
-    title: String
+    title: string
+    id: number
+    active: boolean
+    complete: (id: number) => void
 }
 
-function Task(/* { title }: IProps */) {
+function Task({ title, id, active, complete }: IProps) {
+    const checkStyle = !active && { textDecoration: 'lineThrough' }
     return (
         <div className={styles.main}>
             <div className={styles.title}>
-                <Checkbox />
+                <Checkbox onChange={() => complete(id)} checked={!active} />
                 <div>
-                    <p>Задача</p>
+                    <p style={{ textDecoration: active ? '' : 'line-through' }}>
+                        {title}
+                    </p>
                 </div>
             </div>
 
