@@ -1,5 +1,6 @@
 import { PlusOutlined, UserOutlined } from '@ant-design/icons'
 import { Input } from 'antd'
+import React from 'react'
 import { useState } from 'react'
 
 function MyInput() {
@@ -7,7 +8,6 @@ function MyInput() {
     function changeHandler(event: React.ChangeEvent<HTMLInputElement>) {
         setValue(event.target.value)
     }
-
     return (
         <div style={{ marginBottom: '20px' }}>
             <Input
@@ -21,4 +21,4 @@ function MyInput() {
     )
 }
 
-export default MyInput
+export default React.memo(MyInput)
