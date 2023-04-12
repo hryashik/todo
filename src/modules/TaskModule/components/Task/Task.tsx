@@ -12,7 +12,6 @@ interface IProps {
 }
 
 function Task({ title, id, active, complete }: IProps) {
-    const checkStyle = !active && { textDecoration: 'lineThrough' }
     return (
         <div className={styles.main}>
             <div className={styles.title}>
