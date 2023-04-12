@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './Task.module.scss'
 import { Checkbox } from 'antd'
 import DeleteButton from '../../ui/DeleteButton/DeleteButton'
@@ -8,14 +7,15 @@ interface IProps {
     title: string
     id: number
     active: boolean
-    complete: (id: number) => void
+    completeTask: (id: number) => void
+    deleteTask: (id: number) => void
 }
 
-function Task({ title, id, active, complete }: IProps) {
+function Task({ title, id, active, completeTask, deleteTask }: IProps) {
     return (
         <div className={styles.main}>
             <div className={styles.title}>
-                <Checkbox onChange={() => complete(id)} checked={!active} />
+                <Checkbox onChange={() => completeTask(id)} checked={!active} />
                 <div>
                     <p style={{ textDecoration: active ? '' : 'line-through' }}>
                         {title}
@@ -25,7 +25,7 @@ function Task({ title, id, active, complete }: IProps) {
 
             <div className={styles.buttons}>
                 <EditButton />
-                <DeleteButton />
+                <DeleteButton onConfirm={() => deleteTask(id)} />
             </div>
         </div>
     )

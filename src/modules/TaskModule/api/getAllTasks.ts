@@ -1,6 +1,6 @@
-import { ITask } from '../entities/Task/Task.interface'
+import TaskEntity from '../entities/Task/Task.entity'
 
-const mockArr: ITask[] = [
+const mockArr: TaskEntity[] = [
     {
         id: 1,
         title: 'Задача 1',
@@ -22,11 +22,16 @@ const mockArr: ITask[] = [
         active: true,
     },
 ]
-
-async function getAllTasks(): Promise<ITask[] | undefined> {
-    return new Promise<ITask[] | undefined>(resolve =>
-        setTimeout(() => resolve(mockArr), 2000),
-    )
+// Инициирую фейк запрос
+// Чтобы посмотреть, как себя поведет приложение в случае ошибки, поменять resolve на reject
+async function getAllTasks(): Promise<TaskEntity[]> {
+    try {
+        return await new Promise((resolve, reject) =>
+            setTimeout(() => resolve(mockArr), 2000),
+        )
+    } catch (error) {
+        throw new Error('Произошла ошибка в получении данных')
+    }
 }
 
 export default getAllTasks
