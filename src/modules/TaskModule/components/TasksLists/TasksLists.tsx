@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Task from '../Task/Task'
 import TabsList from '../Tabs/TabsList'
-import { ITask } from '../../entities/Task/Task.interface'
 import SkeletonTasksList from '../SkeletonTasksLists/SkeletonTasksLists'
 
 enum TabsFilter {
@@ -11,14 +10,12 @@ enum TabsFilter {
 }
 
 interface IProps {
-    tasks: ITask[] | undefined
+    tasks: TaskEntity[] | undefined
     completeTask: (id: number) => void
 }
 
 function TasksList({ tasks, completeTask }: IProps) {
     const [tab, setTab] = useState<TabsFilter>(TabsFilter.ACTIVE)
-
-    /* if (!tasks?.length) return <SkeletonTasksList /> */
     const mappedTasks = () => {
         if (tasks)
             switch (tab) {
@@ -50,7 +47,10 @@ function TasksList({ tasks, completeTask }: IProps) {
     return (
         <div>
             <TabsList changeTab={setTab} active={tab} />
-            {tasks?.length ? mappedTasks() : <SkeletonTasksList />}
+            {
+                // Проверка на наличие тасков
+                tasks?.length ? mappedTasks() : <SkeletonTasksList />
+            }
         </div>
     )
 }
