@@ -42,7 +42,10 @@ function TaskModule() {
     (text: string) => createTask(text),
     [tasks]
   );
-  const memoCompleteTask = useCallback((id: number) => completeTask(id), []);
+  const memoCompleteTask = useCallback(
+    (id: number) => completeTask(id),
+    [tasks]
+  );
   const memoDeleteTask = useCallback((id: number) => deleteTask(id), [tasks]);
 
   // Если получаем ошибку
