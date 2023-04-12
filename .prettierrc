@@ -3,5 +3,6 @@
     "trailingComma": "es5",
     "jsxSingleQuote": true,
     "arrowParens": "avoid",
-    "bracketSameLine": false
+    "bracketSameLine": false,
+    "semi": false
 }
