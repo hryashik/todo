@@ -1,19 +1,19 @@
-import { useCallback, useEffect, useState } from 'react';
-import TasksList from './components/TasksLists/TasksLists';
-import MyInput from './ui/MyInputs/MyInput';
-import getAllTasks from './api/getAllTasks';
-import TaskEntity from './entities/Task/Task.entity';
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import TasksList from './components/TasksLists/TasksLists'
+import MyInput from './ui/MyInputs/MainInput'
+import getAllTasks from './api/getAllTasks'
+import TaskEntity from './entities/Task/Task.entity'
 
 function TaskModule() {
-  const [tasks, setTasks] = useState<TaskEntity[] | undefined>(undefined);
-  const [error, setError] = useState<Error | undefined>(undefined);
+  const [tasks, setTasks] = useState<TaskEntity[] | undefined>(undefined)
+  const [error, setError] = useState<Error | undefined>(undefined)
 
   // Получаем таски
   useEffect(() => {
     getAllTasks()
       .then(data => setTasks(data))
-      .catch(error => setError(error));
-  }, []);
+      .catch(error => setError(error))
+  }, [])
 
   // Измененяем стейт
   function completeTask(id: number) {
@@ -22,17 +22,22 @@ function TaskModule() {
         [...tasks].map(el =>
           el.id === id ? { ...el, active: !el.active } : el
         )
-      );
+      )
     }
   }
   function createTask(userInput: string) {
     if (tasks && userInput) {
-      const newTask = new TaskEntity(userInput);
-      setTasks([...tasks, newTask]);
+      const newTask = new TaskEntity(userInput)
+      setTasks([...tasks, newTask])
     }
   }
   function deleteTask(id: number) {
-    if (tasks) setTasks(tasks.filter(el => el.id !== id));
+    if (tasks) setTasks(tasks.filter(el => el.id !== id))
+  }
+  function updateTask(id: number, title: string) {
+    if (tasks && title.length) {
+      setTasks(tasks.map(el => (el.id === id ? { ...el, title } : el)))
+    }
   }
 
   // Мемоизирую все функции
@@ -41,12 +46,19 @@ function TaskModule() {
   const memoCreateTask = useCallback(
     (text: string) => createTask(text),
     [tasks]
-  );
+  )
   const memoCompleteTask = useCallback(
     (id: number) => completeTask(id),
     [tasks]
-  );
-  const memoDeleteTask = useCallback((id: number) => deleteTask(id), [tasks]);
+  )
+  const memoDeleteTask = useCallback(
+    (id: number) => deleteTask(id),
+    [tasks?.length]
+  )
+  const memoUpdateTask = useCallback(
+    (id: number, title: string) => updateTask(id, title),
+    [tasks?.find(el => el.id)]
+  )
 
   // Если получаем ошибку
   if (error) {
@@ -55,7 +67,7 @@ function TaskModule() {
         <MyInput createTask={memoCreateTask} />
         <h1>Произошла ошибка</h1>
       </>
-    );
+    )
   }
 
   return (
@@ -65,9 +77,10 @@ function TaskModule() {
         tasks={tasks}
         completeTask={memoCompleteTask}
         deleteTask={memoDeleteTask}
+        updateTask={memoUpdateTask}
       />
     </div>
-  );
+  )
 }
 
-export default TaskModule;
+export default TaskModule

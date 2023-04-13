@@ -12,9 +12,18 @@
 
 .title {
     display: flex;
+    align-items: center;
 
-    p {
-        margin-left: 10px;
+    label {
+        margin-right: 10px;
+    }
+
+    &__editBlock {
+        display: flex;
+
+        input {
+            margin-right: 5px;
+        }
     }
 }
 

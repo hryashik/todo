@@ -2,17 +2,22 @@ import { EditTwoTone } from '@ant-design/icons'
 import { Button, Tooltip } from 'antd'
 import React from 'react'
 
-function EditButton() {
-    return (
-        <Tooltip title='Изменить'>
-            <Button
-                size='large'
-                type='ghost'
-                shape='circle'
-                icon={<EditTwoTone />}
-            />
-        </Tooltip>
-    )
+interface IProps {
+  onClick: () => void
 }
 
-export default EditButton
+function EditButton({ onClick }: IProps) {
+  return (
+    <Tooltip title='Изменить'>
+      <Button
+        onClick={onClick}
+        size='large'
+        type='ghost'
+        shape='circle'
+        icon={<EditTwoTone />}
+      />
+    </Tooltip>
+  )
+}
+
+export default React.memo(EditButton)
