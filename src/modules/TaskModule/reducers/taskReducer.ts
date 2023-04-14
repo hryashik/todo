@@ -11,7 +11,6 @@ function taskReducer(state: TaskEntity[] | undefined, action: ActionTask) {
         )
       case actionTypeEnum.CREATE:
         const newTask = new TaskEntity(action.payload)
-        console.log('reducer')
         return [...state, newTask]
       case actionTypeEnum.DELETE:
         return state.filter(el => el.id !== action.payload)

@@ -7,6 +7,8 @@ import { CheckOutlined } from '@ant-design/icons'
 import React from 'react'
 import { TaskContext } from '../..'
 import completeTaskAC from '../../reducers/actionCreators/completeTaskAC'
+import deleteTaskAC from '../../reducers/actionCreators/deleteTaskAC'
+import updateTaskAC from '../../reducers/actionCreators/updateTaskAC'
 
 interface IProps {
   title: string
@@ -44,7 +46,7 @@ function Task({
 
   function saveClickHandler() {
     if (inputValue.length > 3 && inputValue !== title) {
-      updateTask(id, inputValue)
+      dispatch(updateTaskAC(id, inputValue))
       setEditMode(false)
       setErrorInput(false)
     } else if (inputValue === title) {
@@ -84,7 +86,7 @@ function Task({
 
       <div className={styles.buttons}>
         <EditButton onClick={memoToggleEditMode} />
-        <DeleteButton onConfirm={() => deleteTask(id)} />
+        <DeleteButton onConfirm={() => dispatch(deleteTaskAC(id))} />
       </div>
     </div>
   )
