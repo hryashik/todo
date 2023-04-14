@@ -2,9 +2,11 @@ import styles from './Task.module.scss'
 import { Button, Checkbox, Input } from 'antd'
 import DeleteButton from '../../ui/DeleteButton/DeleteButton'
 import EditButton from '../../ui/EditButton/EditButton'
-import { useCallback, useState } from 'react'
+import { useCallback, useContext, useState } from 'react'
 import { CheckOutlined } from '@ant-design/icons'
 import React from 'react'
+import { TaskContext } from '../..'
+import completeTaskAC from '../../reducers/actionCreators/completeTaskAC'
 
 interface IProps {
   title: string
@@ -23,6 +25,7 @@ function Task({
   deleteTask,
   updateTask,
 }: IProps) {
+  const dispatch = useContext(TaskContext)
   const [editMode, setEditMode] = useState<boolean>(false)
   const [inputValue, setInputValue] = useState(title)
   const [errorInput, setErrorInput] = useState<boolean>(false)
@@ -53,7 +56,10 @@ function Task({
   return (
     <div className={styles.main}>
       <div className={styles.title}>
-        <Checkbox onChange={() => completeTask(id)} checked={!active} />
+        <Checkbox
+          onChange={() => dispatch(completeTaskAC(id))}
+          checked={!active}
+        />
         {
           // Если включен режим редактирования, показать edit блок
           editMode ? (

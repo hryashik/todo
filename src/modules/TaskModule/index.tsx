@@ -1,24 +1,36 @@
-import { useCallback, useEffect, useMemo, useReducer, useState } from 'react'
+import {
+  createContext,
+  useCallback,
+  useEffect,
+  useMemo,
+  useReducer,
+  useState,
+} from 'react'
 import TasksList from './components/TasksLists/TasksLists'
 import MyInput from './ui/MyInputs/MainInput'
 import getAllTasks from './api/getAllTasks'
 import TaskEntity from './entities/Task/Task.entity'
 import taskReducer from './reducers/taskReducer'
 import { actionTypeEnum } from './reducers/interfaces'
+import fetchTasksAC from './reducers/actionCreators/fetchTasksAC'
+
+export const TaskContext = createContext<any>(null)
 
 function TaskModule() {
   // reducer
   const [tasksState, dispatch] = useReducer(taskReducer, undefined)
   console.log('@taskState', tasksState)
+
   const [tasks, setTasks] = useState<TaskEntity[] | undefined>(undefined)
   const [error, setError] = useState<Error | undefined>(undefined)
 
   // Получаем таски
   useEffect(() => {
     getAllTasks()
-      .then(data => dispatch({ type: actionTypeEnum.FETCH, payload: data }))
+      .then(data => dispatch(fetchTasksAC(data)))
       .catch(error => setError(error))
   }, [])
+
   // Измененяем стейт
   function completeTask(id: number) {
     if (tasks) {
@@ -75,15 +87,17 @@ function TaskModule() {
   }
 
   return (
-    <div>
-      <MyInput createTask={memoCreateTask} />
-      <TasksList
-        tasks={tasks}
-        completeTask={memoCompleteTask}
-        deleteTask={memoDeleteTask}
-        updateTask={memoUpdateTask}
-      />
-    </div>
+    <TaskContext.Provider value={dispatch}>
+      <div>
+        <MyInput createTask={memoCreateTask} />
+        <TasksList
+          tasks={tasksState}
+          completeTask={memoCompleteTask}
+          deleteTask={memoDeleteTask}
+          updateTask={memoUpdateTask}
+        />
+      </div>
+    </TaskContext.Provider>
   )
 }
 

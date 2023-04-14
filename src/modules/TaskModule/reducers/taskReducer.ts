@@ -1,4 +1,3 @@
-import getAllTasks from '../api/getAllTasks'
 import TaskEntity from '../entities/Task/Task.entity'
 import { ActionTask } from './interfaces'
 import { actionTypeEnum } from './interfaces'
