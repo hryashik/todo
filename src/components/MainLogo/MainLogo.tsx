@@ -1,13 +1,9 @@
-import {
-  BulbTwoTone,
-  CarryOutTwoTone,
-  GithubOutlined,
-} from '@ant-design/icons';
-import styles from './MainLogo.module.css';
-import telegram from '../../assets/telegram.svg';
+import { BulbTwoTone, CarryOutTwoTone, GithubOutlined } from '@ant-design/icons'
+import styles from './MainLogo.module.css'
+import telegram from '../../assets/telegram.svg'
 
-const githubUrl = 'https://github.com/hryashik/socnet-client';
-const tgUrl = 'https://t.me/dmitriydultsev';
+const githubUrl = 'https://github.com/hryashik/socnet-client'
+const tgUrl = 'https://t.me/dmitriydultsev'
 
 function MainLogo() {
   return (
@@ -31,7 +27,7 @@ function MainLogo() {
         <h2>Todo app</h2>
       </div>
     </div>
-  );
+  )
 }
 
-export default MainLogo;
+export default MainLogo
