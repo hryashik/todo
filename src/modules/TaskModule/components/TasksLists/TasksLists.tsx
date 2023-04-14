@@ -13,12 +13,9 @@ enum TabsFilter {
 
 interface IProps {
   tasks: TaskEntity[] | undefined
-  completeTask: (id: number) => void
-  deleteTask: (id: number) => void
-  updateTask: (id: number, userInput: string) => void
 }
 
-function TasksList({ tasks, completeTask, deleteTask, updateTask }: IProps) {
+function TasksList({ tasks }: IProps) {
   const [tab, setTab] = useState<TabsFilter>(TabsFilter.ACTIVE)
   const mappedTasks = () => {
     if (tasks)
@@ -27,41 +24,17 @@ function TasksList({ tasks, completeTask, deleteTask, updateTask }: IProps) {
         case TabsFilter.ALL:
           return [...tasks]
             .sort((a, b) => (a.active === b.active ? 0 : a.active ? -1 : 1))
-            .map(el => (
-              <Task
-                key={el.id}
-                {...el}
-                updateTask={updateTask}
-                completeTask={completeTask}
-                deleteTask={deleteTask}
-              />
-            ))
+            .map(el => <Task key={el.id} {...el} />)
         // Возвращаем только завершенные
         case TabsFilter.FINISHED:
           return tasks
             .filter(el => el.active === false)
-            .map(el => (
-              <Task
-                key={el.id}
-                {...el}
-                updateTask={updateTask}
-                completeTask={completeTask}
-                deleteTask={deleteTask}
-              />
-            ))
+            .map(el => <Task key={el.id} {...el} />)
         // Возвращаем только активные
         default:
           return tasks
             .filter(el => el.active === true)
-            .map(el => (
-              <Task
-                key={el.id}
-                {...el}
-                updateTask={updateTask}
-                completeTask={completeTask}
-                deleteTask={deleteTask}
-              />
-            ))
+            .map(el => <Task key={el.id} {...el} />)
       }
   }
   // Если таски еще не пришли, то отрисовываем скелетон

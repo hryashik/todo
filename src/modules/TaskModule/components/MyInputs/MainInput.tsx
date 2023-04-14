@@ -5,11 +5,7 @@ import { useState } from 'react'
 import { TaskContext } from '../..'
 import createTaskAC from '../../reducers/actionCreators/createTaskAC'
 
-interface IProps {
-  createTask: (userInput: string) => void
-}
-
-function MyInput({ createTask }: IProps) {
+function MyInput() {
   const [value, setValue] = useState<string>('')
   const dispatch = useContext(TaskContext)
   function changeHandler(event: React.ChangeEvent<HTMLInputElement>) {

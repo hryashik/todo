@@ -14,19 +14,9 @@ interface IProps {
   title: string
   id: number
   active: boolean
-  completeTask: (id: number) => void
-  deleteTask: (id: number) => void
-  updateTask: (id: number, userInput: string) => void
 }
 
-function Task({
-  title,
-  id,
-  active,
-  completeTask,
-  deleteTask,
-  updateTask,
-}: IProps) {
+function Task({ title, id, active }: IProps) {
   const dispatch = useContext(TaskContext)
   const [editMode, setEditMode] = useState<boolean>(false)
   const [inputValue, setInputValue] = useState(title)
@@ -43,7 +33,6 @@ function Task({
   const memoToggleEditMode = useCallback(() => {
     toggleEditMode()
   }, [])
-
   function saveClickHandler() {
     if (inputValue.length > 3 && inputValue !== title) {
       dispatch(updateTaskAC(id, inputValue))
@@ -55,6 +44,7 @@ function Task({
       setErrorInput(true)
     }
   }
+
   return (
     <div className={styles.main}>
       <div className={styles.title}>
