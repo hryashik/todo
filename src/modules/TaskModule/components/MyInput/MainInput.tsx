@@ -1,9 +1,10 @@
 import { PlusOutlined, UserOutlined } from '@ant-design/icons'
-import { Input } from 'antd'
+import { Button, Input } from 'antd'
 import React, { useContext } from 'react'
 import { useState } from 'react'
 import { TaskContext } from '../..'
 import createTaskAC from '../../reducers/actionCreators/createTaskAC'
+import styles from './MyInput.module.scss'
 
 function MyInput() {
   const [value, setValue] = useState<string>('')
@@ -15,15 +16,23 @@ function MyInput() {
     dispatch(createTaskAC(value))
     setValue('')
   }
+  function enterHandler(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Enter') {
+      dispatch(createTaskAC(value))
+      setValue('')
+    }
+  }
   console.log('@input')
   return (
-    <div style={{ marginBottom: '20px' }}>
+    <div className={styles.main}>
       <Input
         size='large'
-        placeholder='task name'
+        placeholder='Название задачи...'
+        autoFocus={true}
         addonAfter={<PlusOutlined onClick={clickHandler} />}
         value={value}
         onChange={changeHandler}
+        onKeyDown={enterHandler}
       />
     </div>
   )

@@ -1,4 +1,4 @@
-import { EditTwoTone } from '@ant-design/icons'
+import { EditTwoTone, EditOutlined } from '@ant-design/icons'
 import { Button, Tooltip } from 'antd'
 import React from 'react'
 
@@ -12,9 +12,9 @@ function EditButton({ onClick }: IProps) {
       <Button
         onClick={onClick}
         size='large'
-        type='ghost'
-        shape='circle'
-        icon={<EditTwoTone />}
+        type='text'
+        shape='default'
+        icon={<EditOutlined style={{ color: '#00a3ff' }} />}
       />
     </Tooltip>
   )

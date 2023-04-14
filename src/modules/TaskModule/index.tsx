@@ -1,6 +1,6 @@
 import { createContext, useEffect, useReducer, useState } from 'react'
 import TasksList from './components/TasksLists/TasksLists'
-import MyInput from './components/MyInputs/MainInput'
+import MyInput from './components/MyInput/MainInput'
 import getAllTasks from './api/getAllTasks'
 import taskReducer from './reducers/taskReducer'
 import fetchTasksAC from './reducers/actionCreators/fetchTasksAC'

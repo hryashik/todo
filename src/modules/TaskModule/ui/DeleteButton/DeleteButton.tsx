@@ -1,4 +1,8 @@
-import { DeleteTwoTone, QuestionCircleOutlined } from '@ant-design/icons'
+import {
+  DeleteTwoTone,
+  QuestionCircleOutlined,
+  DeleteOutlined,
+} from '@ant-design/icons'
 import { Button, Popconfirm, Tooltip } from 'antd'
 
 interface IProps {
@@ -13,15 +17,15 @@ const DeleteButton: React.FC<IProps> = ({ onConfirm }) => {
       cancelText='Отмена'
       title='Удаление задачи'
       description='Вы уверены, что хотите удалить задачу?'
-      icon={<QuestionCircleOutlined style={{ color: 'red' }} />}
+      icon={<QuestionCircleOutlined />}
     >
       <Tooltip title='Удалить'>
         <Button
           size='large'
-          type='ghost'
-          shape='circle'
+          type='text'
+          shape='default'
           danger={true}
-          icon={<DeleteTwoTone twoToneColor='#eb2f96' />}
+          icon={<DeleteOutlined />}
         />
       </Tooltip>
     </Popconfirm>

@@ -1,4 +1,8 @@
-import { BulbTwoTone, CarryOutTwoTone, GithubOutlined } from '@ant-design/icons'
+import {
+  CarryOutOutlined,
+  CarryOutTwoTone,
+  GithubOutlined,
+} from '@ant-design/icons'
 import styles from './MainLogo.module.css'
 import telegram from '../../assets/telegram.svg'
 
@@ -23,7 +27,7 @@ function MainLogo() {
         </div>
       </div>
       <div className={styles.main__title}>
-        <CarryOutTwoTone />
+        <CarryOutOutlined />
         <h2>Todo app</h2>
       </div>
     </div>

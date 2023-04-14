@@ -1,0 +1,14 @@
+.main {
+  /* margin-bottom: 10px; */
+
+  input {
+    height: 50px;
+    background: none;
+    transition: 0.3s;
+
+    &:focus {
+      transition: 0.3s;
+      background: white;
+    }
+  }
+}
