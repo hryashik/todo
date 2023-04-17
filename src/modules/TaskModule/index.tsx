@@ -1,21 +1,24 @@
-import { useEffect, useReducer, useState } from 'react'
+import { useEffect, useState } from 'react'
 import TasksList from './components/TasksLists/TasksLists'
 import MyInput from './components/MyInput/MainInput'
 import getAllTasks from './api/getAllTasks'
-import taskReducer from './state/reducers/taskReducer'
 import fetchTasksAC from './state/actionCreators/fetchTasksAC'
-import TaskProvider from './state/TaskProvider'
+import StateProvider from './state/StateProvider'
+import getState from './state/hooks/getState'
+import useDispatch from './state/hooks/useDispatch'
 
 function TaskModule() {
   // state
-  const [tasksState, dispatch] = useReducer(taskReducer, undefined)
+  const tasksState = getState()
+  const dispatch = useDispatch()
   const [error, setError] = useState<Error | undefined>(undefined)
   console.log('@taskState', tasksState)
-
   // Получаем таски
   useEffect(() => {
     getAllTasks()
-      .then(data => dispatch(fetchTasksAC(data)))
+      .then(data => {
+        dispatch(fetchTasksAC(data))
+      })
       .catch(error => setError(error))
   }, [])
 
@@ -30,13 +33,15 @@ function TaskModule() {
   }
 
   return (
-    <TaskProvider.Provider value={dispatch}>
-      <div>
-        <MyInput />
-        <TasksList tasks={tasksState} />
-      </div>
-    </TaskProvider.Provider>
+    <>
+      <MyInput />
+      <TasksList tasks={tasksState} />
+    </>
   )
 }
 
-export default TaskModule
+export default () => (
+  <StateProvider>
+    <TaskModule />
+  </StateProvider>
+)

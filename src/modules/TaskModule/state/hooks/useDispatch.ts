@@ -1,7 +1,6 @@
 import { useContext } from 'react'
-import { ActionTaskType } from '../interfaces'
-import TaskProvider from '../TaskProvider'
+import StateProvider, { DispatchProvider } from '../StateProvider'
 
-const useDispatch = () => useContext(TaskProvider)
+const useDispatch = () => useContext(DispatchProvider)
 
 export default useDispatch

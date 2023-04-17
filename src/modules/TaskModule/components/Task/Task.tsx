@@ -21,7 +21,7 @@ function Task({ title, id, active }: IProps) {
   const [editMode, setEditMode] = useState<boolean>(false)
   const [inputValue, setInputValue] = useState(title)
   const [errorInput, setErrorInput] = useState<boolean>(false)
-  console.log('Таска нарисовалась')
+  console.log('@Task render')
   // Различные обработчики
   function changeInputHandler(e: React.ChangeEvent<HTMLInputElement>) {
     setInputValue(e.currentTarget.value)
