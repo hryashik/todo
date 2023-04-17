@@ -6,7 +6,7 @@ import {
 import styles from './MainLogo.module.css'
 import telegram from '../../assets/telegram.svg'
 
-const githubUrl = 'https://github.com/hryashik/socnet-client'
+const githubUrl = 'https://github.com/hryashik/todo'
 const tgUrl = 'https://t.me/dmitriydultsev'
 
 function MainLogo() {

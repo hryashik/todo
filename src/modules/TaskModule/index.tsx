@@ -1,10 +1,10 @@
-import { createContext, useEffect, useReducer, useState } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 import TasksList from './components/TasksLists/TasksLists'
 import MyInput from './components/MyInput/MainInput'
 import getAllTasks from './api/getAllTasks'
-import taskReducer from './reducers/taskReducer'
-import fetchTasksAC from './reducers/actionCreators/fetchTasksAC'
-import TaskProvider from './reducers/TaskProvider'
+import taskReducer from './state/reducers/taskReducer'
+import fetchTasksAC from './state/actionCreators/fetchTasksAC'
+import TaskProvider from './state/TaskProvider'
 
 function TaskModule() {
   // state

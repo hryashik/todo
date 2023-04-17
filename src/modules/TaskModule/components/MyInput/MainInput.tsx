@@ -1,11 +1,10 @@
 import { PlusOutlined, UserOutlined } from '@ant-design/icons'
-import { Button, Input } from 'antd'
-import React, { useContext } from 'react'
+import { Input } from 'antd'
+import React from 'react'
 import { useState } from 'react'
-import { TaskContext } from '../..'
-import createTaskAC from '../../reducers/actionCreators/createTaskAC'
+import createTaskAC from '../../state/actionCreators/createTaskAC'
 import styles from './MyInput.module.scss'
-import useDispatch from '../../reducers/hooks/useDispatch'
+import useDispatch from '../../state/hooks/useDispatch'
 
 function MyInput() {
   const [value, setValue] = useState<string>('')

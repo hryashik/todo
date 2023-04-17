@@ -1,6 +1,6 @@
-import TaskEntity from '../entities/Task/Task.entity'
-import { ActionTaskType } from './interfaces'
-import { actionTypeEnum } from './interfaces'
+import TaskEntity from '../../entities/Task/Task.entity'
+import { ActionTaskType } from '../interfaces'
+import { actionTypeEnum } from '../interfaces'
 
 function taskReducer(state: TaskEntity[] | undefined, action: ActionTaskType) {
   if (state) {

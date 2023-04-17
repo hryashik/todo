@@ -9,8 +9,8 @@ export enum actionTypeEnum {
 }
 
 export type ActionTaskType =
-  | { type: actionTypeEnum.COMPLETE; payload: number }
+  | { type: actionTypeEnum.COMPLETE; payload: string }
   | { type: actionTypeEnum.CREATE; payload: string }
-  | { type: actionTypeEnum.DELETE; payload: number }
-  | { type: actionTypeEnum.UPDATE; payload: { id: number; title: string } }
+  | { type: actionTypeEnum.DELETE; payload: string }
+  | { type: actionTypeEnum.UPDATE; payload: { id: string; title: string } }
   | { type: actionTypeEnum.FETCH; payload: TaskEntity[] }

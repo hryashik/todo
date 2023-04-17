@@ -5,14 +5,14 @@ import EditButton from '../../ui/EditButton/EditButton'
 import { useCallback, useContext, useState } from 'react'
 import { CheckOutlined } from '@ant-design/icons'
 import React from 'react'
-import completeTaskAC from '../../reducers/actionCreators/completeTaskAC'
-import deleteTaskAC from '../../reducers/actionCreators/deleteTaskAC'
-import updateTaskAC from '../../reducers/actionCreators/updateTaskAC'
-import useDispatch from '../../reducers/hooks/useDispatch'
+import completeTaskAC from '../../state/actionCreators/completeTaskAC'
+import deleteTaskAC from '../../state/actionCreators/deleteTaskAC'
+import updateTaskAC from '../../state/actionCreators/updateTaskAC'
+import useDispatch from '../../state/hooks/useDispatch'
 
 interface IProps {
   title: string
-  id: number
+  id: string
   active: boolean
 }
 
