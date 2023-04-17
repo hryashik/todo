@@ -1,6 +1,6 @@
-import { ActionTask, actionTypeEnum } from '../interfaces'
+import { ActionTaskType, actionTypeEnum } from '../interfaces'
 
-const deleteTaskAC = (id: number): ActionTask => ({
+const deleteTaskAC = (id: number): ActionTaskType => ({
   type: actionTypeEnum.DELETE,
   payload: id,
 })

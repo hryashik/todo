@@ -24,8 +24,7 @@ const DeleteButton: React.FC<IProps> = ({ onConfirm }) => {
           size='large'
           type='text'
           shape='default'
-          danger={true}
-          icon={<DeleteOutlined />}
+          icon={<DeleteOutlined style={{ color: 'red' }} />}
         />
       </Tooltip>
     </Popconfirm>

@@ -1,6 +1,6 @@
-import { ActionTask, actionTypeEnum } from '../interfaces'
+import { ActionTaskType, actionTypeEnum } from '../interfaces'
 
-const updateTaskAC = (id: number, title: string): ActionTask => ({
+const updateTaskAC = (id: number, title: string): ActionTaskType => ({
   type: actionTypeEnum.UPDATE,
   payload: {
     id,

@@ -1,8 +1,8 @@
 import TaskEntity from '../entities/Task/Task.entity'
-import { ActionTask } from './interfaces'
+import { ActionTaskType } from './interfaces'
 import { actionTypeEnum } from './interfaces'
 
-function taskReducer(state: TaskEntity[] | undefined, action: ActionTask) {
+function taskReducer(state: TaskEntity[] | undefined, action: ActionTaskType) {
   if (state) {
     switch (action.type) {
       case actionTypeEnum.COMPLETE:

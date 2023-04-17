@@ -1,7 +1,7 @@
 import TaskEntity from '../../entities/Task/Task.entity'
-import { ActionTask, actionTypeEnum } from '../interfaces'
+import { ActionTaskType, actionTypeEnum } from '../interfaces'
 
-const fetchTasksAC = (payload: TaskEntity[]): ActionTask => ({
+const fetchTasksAC = (payload: TaskEntity[]): ActionTaskType => ({
   type: actionTypeEnum.FETCH,
   payload,
 })

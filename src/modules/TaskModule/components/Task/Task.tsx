@@ -5,10 +5,10 @@ import EditButton from '../../ui/EditButton/EditButton'
 import { useCallback, useContext, useState } from 'react'
 import { CheckOutlined } from '@ant-design/icons'
 import React from 'react'
-import { TaskContext } from '../..'
 import completeTaskAC from '../../reducers/actionCreators/completeTaskAC'
 import deleteTaskAC from '../../reducers/actionCreators/deleteTaskAC'
 import updateTaskAC from '../../reducers/actionCreators/updateTaskAC'
+import useDispatch from '../../reducers/hooks/useDispatch'
 
 interface IProps {
   title: string
@@ -17,7 +17,7 @@ interface IProps {
 }
 
 function Task({ title, id, active }: IProps) {
-  const dispatch = useContext(TaskContext)
+  const dispatch = useDispatch()
   const [editMode, setEditMode] = useState<boolean>(false)
   const [inputValue, setInputValue] = useState(title)
   const [errorInput, setErrorInput] = useState<boolean>(false)

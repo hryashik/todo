@@ -1,6 +1,6 @@
-import { ActionTask, actionTypeEnum } from '../interfaces'
+import { ActionTaskType, actionTypeEnum } from '../interfaces'
 
-const createTaskAC = (title: string): ActionTask => ({
+const createTaskAC = (title: string): ActionTaskType => ({
   type: actionTypeEnum.CREATE,
   payload: title,
 })

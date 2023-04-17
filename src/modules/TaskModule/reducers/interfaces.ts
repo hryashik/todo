@@ -8,7 +8,7 @@ export enum actionTypeEnum {
   FETCH = 'fetch',
 }
 
-export type ActionTask =
+export type ActionTaskType =
   | { type: actionTypeEnum.COMPLETE; payload: number }
   | { type: actionTypeEnum.CREATE; payload: string }
   | { type: actionTypeEnum.DELETE; payload: number }

@@ -5,10 +5,11 @@ import { useState } from 'react'
 import { TaskContext } from '../..'
 import createTaskAC from '../../reducers/actionCreators/createTaskAC'
 import styles from './MyInput.module.scss'
+import useDispatch from '../../reducers/hooks/useDispatch'
 
 function MyInput() {
   const [value, setValue] = useState<string>('')
-  const dispatch = useContext(TaskContext)
+  const dispatch = useDispatch()
   function changeHandler(event: React.ChangeEvent<HTMLInputElement>) {
     setValue(event.target.value)
   }
@@ -22,7 +23,7 @@ function MyInput() {
       setValue('')
     }
   }
-  console.log('@input')
+
   return (
     <div className={styles.main}>
       <Input

@@ -4,8 +4,7 @@ import MyInput from './components/MyInput/MainInput'
 import getAllTasks from './api/getAllTasks'
 import taskReducer from './reducers/taskReducer'
 import fetchTasksAC from './reducers/actionCreators/fetchTasksAC'
-
-export const TaskContext = createContext<any>(null)
+import TaskProvider from './reducers/TaskProvider'
 
 function TaskModule() {
   // state
@@ -31,12 +30,12 @@ function TaskModule() {
   }
 
   return (
-    <TaskContext.Provider value={dispatch}>
+    <TaskProvider.Provider value={dispatch}>
       <div>
         <MyInput />
         <TasksList tasks={tasksState} />
       </div>
-    </TaskContext.Provider>
+    </TaskProvider.Provider>
   )
 }
 
