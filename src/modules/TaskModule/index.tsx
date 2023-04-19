@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import TasksList from './components/TasksLists/TasksLists'
+import TasksList from './components/TasksList/TasksList'
 import MyInput from './components/MyInput/MainInput'
 import getAllTasks from './api/getAllTasks'
 import fetchTasksAC from './state/actionCreators/fetchTasksAC'
